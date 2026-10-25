@@ -30,7 +30,7 @@
                 <label for="email" class="field-label">Email address</label>
                 <input id="email" name="email" type="email" value="{{ old('email') }}" required autofocus autocomplete="username"
                        @class(['field', 'field-error' => $errors->has('email')])
-                       placeholder="you@lapulapu.example">
+                       placeholder="username@gmail.com">
                 @error('email')
                     <p class="field-error-text">{{ $message }}</p>
                 @enderror
