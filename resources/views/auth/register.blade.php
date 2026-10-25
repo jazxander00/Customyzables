@@ -52,7 +52,7 @@
             <div>
                 <label for="email" class="field-label">Email address</label>
                 <input id="email" name="email" type="email" value="{{ old('email') }}" required autocomplete="username"
-                       @class(['field', 'field-error' => $errors->has('email')]) placeholder="you@lapulapu.example">
+                       @class(['field', 'field-error' => $errors->has('email')]) placeholder="username@email.com">
                 @error('email')<p class="field-error-text">{{ $message }}</p>@enderror
             </div>
 
@@ -86,7 +86,7 @@
                 <div>
                     <label for="phone" class="field-label">Mobile number <span class="font-normal text-ink-faint">(optional)</span></label>
                     <input id="phone" name="phone" type="text" value="{{ old('phone') }}" autocomplete="tel"
-                           class="field" placeholder="09xx xxx xxxx">
+                           class="field" placeholder="63+">
                     @error('phone')<p class="field-error-text">{{ $message }}</p>@enderror
                 </div>
             </div>
