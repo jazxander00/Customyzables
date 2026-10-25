@@ -61,6 +61,35 @@
 
             <div class="flex items-center gap-2">
                 @auth
+                    {{-- The main nav is hidden below md, so phones get their own menu. --}}
+                    <div class="relative md:hidden" data-menu>
+                        <button type="button" data-menu-trigger aria-expanded="false" aria-haspopup="true" aria-label="Open navigation"
+                                class="flex h-9 w-9 items-center justify-center rounded-pill border border-sand-300 bg-white text-ink-soft transition hover:border-clay-300">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+                        </button>
+
+                        <div data-menu-panel class="absolute right-0 top-full z-50 mt-2 hidden w-48 rounded-xl border border-sand-300 bg-white p-1.5 shadow-lift">
+                            <div class="flex flex-col">
+                                @if (auth()->user()->isAdmin())
+                                    <a href="{{ route('admin.dashboard') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('admin.dashboard')])>Dashboard</a>
+                                    <a href="{{ route('admin.users') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('admin.users')])>Users</a>
+                                    <a href="{{ route('admin.donations') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('admin.donations')])>Donations</a>
+                                    <a href="{{ route('admin.audit') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('admin.audit')])>Audit trail</a>
+                                @else
+                                    <a href="{{ route(auth()->user()->role->dashboardRoute()) }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('dashboard.*')])>Dashboard</a>
+                                    <a href="{{ route('browse.index') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('browse.*')])>Browse</a>
+                                    @if (auth()->user()->isDonor())
+                                        <a href="{{ route('donations.index') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('donations.*')])>My donations</a>
+                                    @else
+                                        <a href="{{ route('requests.index') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('requests.*')])>My requests</a>
+                                    @endif
+                                    <a href="{{ route('chat.index') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('chat.*')])>Messages</a>
+                                    <a href="{{ route('profile.impact') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('profile.impact')])>My impact</a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
                     @if (auth()->user()->isDonor())
                         <a href="{{ route('donations.create') }}" class="btn-primary hidden lg:inline-flex" data-press>
                             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
