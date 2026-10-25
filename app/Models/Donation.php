@@ -62,7 +62,7 @@ class Donation extends Model
 
     public const BARANGAYS = [
         'Pajo', 'Mactan', 'Gun-ob', 'Marigondon', 'Punta Engaño', 'Basak',
-        'Bankal', 'Babag', 'Buaya', 'Canjulao', 'Ibo', 'Looc', 'Mactan',
+        'Bankal', 'Babag', 'Buaya', 'Canjulao', 'Ibo', 'Looc',
         'Pusok', 'Sa-ib', 'San Vicente', 'Santa Rosa', 'Suba-basbas', 'Talima', 'Tingo',
     ];
 
@@ -110,9 +110,12 @@ class Donation extends Model
     {
         return $query
             ->when($filters['q'] ?? null, function (Builder $q, string $term) {
-                $q->where(function (Builder $inner) use ($term) {
-                    $inner->where('title', 'like', "%{$term}%")
-                        ->orWhere('description', 'like', "%{$term}%");
+                // Escape LIKE wildcards so a search for "100%" stays a literal search.
+                $like = '%' . addcslashes($term, '%_\\') . '%';
+
+                $q->where(function (Builder $inner) use ($like) {
+                    $inner->where('title', 'like', $like)
+                        ->orWhere('description', 'like', $like);
                 });
             })
             ->when($filters['category'] ?? null, fn (Builder $q, string $c) => $q->where('category', $c))

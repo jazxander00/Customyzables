@@ -12,6 +12,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -53,11 +54,15 @@ class AdminController extends Controller
         $role = $request->query('role');
 
         $users = User::query()
-            ->when($search, fn ($q, $term) => $q->where(function ($inner) use ($term) {
-                $inner->where('name', 'like', "%{$term}%")
-                    ->orWhere('email', 'like', "%{$term}%")
-                    ->orWhere('organization', 'like', "%{$term}%");
-            }))
+            ->when($search, function ($q, $term) {
+                $like = '%' . addcslashes($term, '%_\\') . '%';
+
+                $q->where(function ($inner) use ($like) {
+                    $inner->where('name', 'like', $like)
+                        ->orWhere('email', 'like', $like)
+                        ->orWhere('organization', 'like', $like);
+                });
+            })
             ->when($role && Role::tryFrom($role), fn ($q) => $q->where('role', $role))
             ->latest()
             ->paginate(10)
@@ -134,6 +139,11 @@ class AdminController extends Controller
             'donor' => $donation->donor?->name,
             'reason' => $request->input('reason'),
         ]);
+
+        // Drop the uploaded photos too, or the public disk keeps them forever.
+        foreach ($donation->images as $image) {
+            Storage::disk('public')->delete($image->path);
+        }
 
         $donation->delete();
 
