@@ -74,9 +74,14 @@ class SmokeTest extends TestCase
         $donor = $this->user('elaine@customyzables.test');
         $upcycler = $this->user('johnriel@customyzables.test');
 
-        $this->actingAs($donor)->get(route('admin.dashboard'))->assertForbidden();
+        $this->actingAs($donor)->get(route('admin.dashboard'))->assertForbidden()->assertSee("That area isn't yours", false);
         $this->actingAs($donor)->get(route('dashboard.upcycler'))->assertForbidden();
         $this->actingAs($upcycler)->get(route('donations.index'))->assertForbidden();
+    }
+
+    public function test_unknown_urls_show_the_branded_not_found_page(): void
+    {
+        $this->get('/no-such-page')->assertNotFound()->assertSee('This page has been upcycled');
     }
 
     public function test_unverified_upcycler_cannot_request(): void
