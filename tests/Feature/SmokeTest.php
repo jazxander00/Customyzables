@@ -16,12 +16,28 @@ class SmokeTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        $this->withoutVite();
         $this->seed();
     }
 
     private function user(string $email): User
     {
         return User::where('email', $email)->firstOrFail();
+    }
+
+    private function donationPayload(Donation $donation, array $overrides = []): array
+    {
+        return array_merge([
+            'title' => $donation->title,
+            'description' => $donation->description,
+            'category' => $donation->category,
+            'condition' => $donation->condition,
+            'weight_kg' => $donation->weight_kg,
+            'item_count' => $donation->item_count,
+            'barangay' => $donation->barangay,
+            'handoff_method' => $donation->handoff_method->value,
+            'pickup_address' => $donation->pickup_address,
+        ], $overrides);
     }
 
     public function test_public_pages_render(): void
@@ -206,5 +222,78 @@ class SmokeTest extends TestCase
         $donation = Donation::where('title', 'like', 'Clean cotton T-shirts%')->firstOrFail();
 
         $this->actingAs($outsider)->get(route('chat.show', $donation))->assertForbidden();
+    }
+
+    public function test_donor_can_update_a_listed_donation(): void
+    {
+        $donor = $this->user('elaine@customyzables.test');
+        $donation = Donation::where('status', DonationStatus::Listed)
+            ->where('user_id', $donor->id)
+            ->firstOrFail();
+
+        $this->actingAs($donor)->put(
+            route('donations.update', $donation),
+            $this->donationPayload($donation, ['title' => 'Natural sand linen remnants — updated'])
+        )->assertRedirect(route('donations.show', $donation));
+
+        $this->assertSame('Natural sand linen remnants — updated', $donation->fresh()->title);
+        $this->assertDatabaseHas('audit_logs', ['action' => 'donation.updated']);
+    }
+
+    public function test_only_the_owner_can_update_a_listed_donation(): void
+    {
+        $otherDonor = $this->user('maria@customyzables.test');
+        $donation = Donation::where('status', DonationStatus::Listed)->firstOrFail();
+
+        $this->actingAs($otherDonor)
+            ->put(route('donations.update', $donation), $this->donationPayload($donation, ['title' => 'Hijacked listing']))
+            ->assertForbidden();
+    }
+
+    public function test_a_donation_outside_listed_status_cannot_be_updated(): void
+    {
+        $donor = $this->user('elaine@customyzables.test');
+        $donation = $donor->donations()->where('status', DonationStatus::Requested)->firstOrFail();
+
+        $this->actingAs($donor)
+            ->put(route('donations.update', $donation), $this->donationPayload($donation, ['title' => 'Changed after requests arrived']))
+            ->assertForbidden();
+    }
+
+    public function test_admin_can_view_reports_and_export_csv(): void
+    {
+        $admin = $this->user('admin@customyzables.test');
+
+        $this->actingAs($admin)
+            ->get(route('admin.reports'))
+            ->assertOk()
+            ->assertSee('Transaction history')
+            ->assertSee('Donations per month');
+
+        $response = $this->actingAs($admin)->get(route('admin.reports.export'));
+
+        $response->assertOk();
+        $this->assertStringContainsString('text/csv', $response->headers->get('content-type'));
+        $this->assertStringContainsString('attachment', $response->headers->get('content-disposition'));
+        $this->assertStringContainsString('Donation,Donor,Upcycler', $response->streamedContent());
+    }
+
+    public function test_donors_cannot_view_admin_reports(): void
+    {
+        $donor = $this->user('elaine@customyzables.test');
+
+        $this->actingAs($donor)->get(route('admin.reports'))->assertForbidden();
+        $this->actingAs($donor)->get(route('admin.reports.export'))->assertForbidden();
+    }
+
+    public function test_csv_export_neutralises_spreadsheet_formulas(): void
+    {
+        $admin = $this->user('admin@customyzables.test');
+        $donation = Donation::where('title', 'like', 'Clean cotton T-shirts%')->firstOrFail();
+        $donation->forceFill(['title' => '=HYPERLINK("http://evil.test")'])->save();
+
+        $csv = $this->actingAs($admin)->get(route('admin.reports.export'))->streamedContent();
+
+        $this->assertStringContainsString("'=HYPERLINK", $csv);
     }
 }

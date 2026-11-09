@@ -13,6 +13,7 @@
                 </p>
             </div>
             <div class="flex gap-2">
+                <a href="{{ route('admin.reports') }}" class="btn-secondary">Reports</a>
                 <a href="{{ route('admin.users') }}" class="btn-secondary">Users</a>
                 <a href="{{ route('admin.audit') }}" class="btn-secondary">Audit trail</a>
             </div>

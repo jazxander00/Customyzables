@@ -138,7 +138,7 @@ All passwords are `password`.
   requests, mark items received, chat. Unverified accounts are read-only until an admin
   approves them.
 - **Admin** — verify/unverify upcyclers, suspend/reinstate accounts, moderate and remove
-  donations, review the audit trail.
+  donations, review the audit trail, and generate date-ranged reports with CSV export.
 
 Route groups are protected by a `role:` middleware; the request workflow re-checks
 authorization server-side (an unverified upcycler cannot POST a request directly).
@@ -158,6 +158,14 @@ source of truth for:
 - dropping a bundle back to `listed` when the last pending request is declined,
 - writing a `donation_events` row and an `audit_logs` entry.
 
+### Reporting
+
+`/admin/reports` (admin only) generates a date-ranged report straight from the database:
+summary cards, donations per month and per fibre, transaction history, and user activity.
+The transaction table is a three-way SQL JOIN across `donation_requests`, `donations`, and
+`users` (separate donor and upcycler aliases); user activity uses a LEFT JOIN so system
+actions stay in the report. **Export CSV** streams the same filtered transaction history.
+
 ### Pages
 
 | Route | Purpose |
@@ -170,7 +178,7 @@ source of truth for:
 | `/my-requests` | Upcycler request list |
 | `/chat`, `/chat/{donation}` | One conversation per donation |
 | `/profile`, `/impact` | Profile settings, password change, personal impact |
-| `/admin/*` | Overview, users, donation moderation, audit trail |
+| `/admin/*` | Overview, users, donation moderation, audit trail, reports |
 
 ### Design system
 
@@ -204,8 +212,9 @@ JavaScript fails (`.js [data-reveal]` is only hidden once the bundle has run).
 php artisan test
 ```
 
-14 feature tests cover public pages, role isolation, registration/publishing, the full
-listed → completed workflow, verification, and chat access control.
+21 tests cover public pages, role isolation, registration/publishing, editing a listed
+donation, the full listed → completed workflow, verification, chat access control, and
+the admin reports + CSV export (including spreadsheet-formula neutralisation).
 
 The suite uses a **separate database** (`customyzables_testing`, configured in
 `phpunit.xml`) so `RefreshDatabase` never touches your demo data.

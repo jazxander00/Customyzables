@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\BrowseController;
@@ -43,6 +44,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/donations', [DonationController::class, 'index'])->name('donations.index');
         Route::get('/donations/create', [DonationController::class, 'create'])->name('donations.create');
         Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
+        Route::get('/donations/{donation}/edit', [DonationController::class, 'edit'])->name('donations.edit');
+        Route::put('/donations/{donation}', [DonationController::class, 'update'])->name('donations.update');
         Route::get('/donations/{donation}', [DonationController::class, 'show'])->name('donations.show');
         Route::post('/donations/{donation}/cancel', [DonationController::class, 'cancel'])->name('donations.cancel');
         Route::delete('/donations/{donation}', [DonationController::class, 'destroy'])->name('donations.destroy');
@@ -80,5 +83,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/donations', [AdminController::class, 'donations'])->name('donations');
         Route::delete('/donations/{donation}', [AdminController::class, 'removeDonation'])->name('donations.remove');
         Route::get('/audit', [AdminController::class, 'audit'])->name('audit');
+        Route::get('/reports', [ReportController::class, 'index'])->name('reports');
+        Route::get('/reports/export', [ReportController::class, 'export'])->name('reports.export');
     });
 });
