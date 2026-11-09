@@ -3,90 +3,41 @@
 @section('title', 'Customyzables — Give your clothes a second life in Lapu-Lapu')
 
 @section('content')
-    {{-- Hero --}}
-    <section class="relative overflow-hidden">
-        <div class="pointer-events-none absolute inset-x-0 -top-40 h-[420px] bg-[radial-gradient(600px_300px_at_50%_50%,rgba(244,205,188,0.45),transparent_70%)]"></div>
+    {{-- Hero: type-led. No gradient blob, no mocked "live" card — the feed below shows real ones. --}}
+    <section class="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 sm:pt-20 lg:px-8">
+        <div class="max-w-3xl">
+            <span class="eyebrow" data-reveal>Lapu-Lapu circular hub</span>
 
-        <div class="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 sm:pt-20 lg:px-8">
-            <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-                <div>
-                    <span class="eyebrow" data-reveal>
-                        <span class="h-1.5 w-1.5 rounded-full bg-forest-500"></span>
-                        Lapu-Lapu circular hub
-                    </span>
+            <h1 class="mt-6 text-balance font-display text-[2.7rem] font-medium leading-[1.02] tracking-[-0.03em] sm:text-6xl lg:text-[4.75rem]" data-reveal>
+                Give your clothes a second life — with someone who will
+                <em class="text-clay-700">actually use them.</em>
+            </h1>
 
-                    <h1 class="mt-5 text-balance text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.4rem]" data-reveal>
-                        Give your clothes a second life — with someone who will actually use them.
-                    </h1>
+            <p class="mt-7 max-w-xl text-base leading-relaxed text-ink-muted" data-reveal>
+                Customyzables connects households in Lapu-Lapu with local upcyclers who turn pre-loved fabric
+                into bags, rugs, and new garments. Post what you have, see who wants it, and follow it all the
+                way to its second life.
+            </p>
 
-                    <p class="mt-5 max-w-xl text-base leading-relaxed text-ink-muted" data-reveal>
-                        Customyzables connects households in Lapu-Lapu with local upcyclers who turn pre-loved fabric
-                        into bags, rugs, and new garments. Post what you have, see who wants it, and follow it all the
-                        way to its second life.
-                    </p>
-
-                    <div class="mt-8 flex flex-wrap items-center gap-3" data-reveal>
-                        <a href="{{ route('register') }}" class="btn-primary px-5 py-3 text-[15px]" data-press>
-                            Donate clothes
-                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                        </a>
-                        <a href="{{ route('browse.index') }}" class="btn-secondary px-5 py-3 text-[15px]">
-                            Browse donations
-                        </a>
-                    </div>
-
-                    <p class="mt-5 flex items-center gap-2 text-xs text-ink-faint" data-reveal>
-                        <svg class="h-3.5 w-3.5 text-forest-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-                        Free for donors and upcyclers. No fees, no shipping, everything stays local.
-                    </p>
-                </div>
-
-                {{-- Right: a live-looking card, mocked from the real data model --}}
-                <div class="relative" data-reveal>
-                    <div class="card absolute -left-4 top-6 hidden w-40 rotate-[-4deg] p-3 sm:block">
-                        <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-ink-faint">Just listed</p>
-                        <p class="mt-1 text-xs font-bold leading-snug">Selvedge denim offcuts</p>
-                        <p class="mt-0.5 text-[11px] text-ink-muted">Basak · 3.2 kg</p>
-                    </div>
-
-                    <div class="card ml-auto w-full max-w-md overflow-hidden">
-                        <div class="relative aspect-[16/10] bg-gradient-to-br from-sand-200 via-sand-100 to-clay-100">
-                            <div class="absolute left-3 top-3 flex gap-1.5">
-                                <span class="badge bg-white/95 text-ink shadow-sm">4.8 kg</span>
-                                <span class="badge bg-white/95 text-ink-muted shadow-sm">Gently used</span>
-                            </div>
-                            <div class="flex h-full items-center justify-center">
-                                <svg class="h-12 w-12 text-sand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M8 3h8l-1.2 6H9.2L8 3Z"/><path d="M9.2 9 4 21h16L14.8 9"/><path d="M9 16h6"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <div class="flex items-center justify-between text-[11px] text-ink-faint">
-                                <span class="font-semibold uppercase tracking-[0.12em]">Denim</span>
-                                <span>2 hours ago</span>
-                            </div>
-                            <p class="mt-1.5 text-sm font-bold">Pre-loved denim jackets &amp; jeans (5 pcs)</p>
-                            <p class="mt-1 text-xs text-ink-muted">Heavy 12oz cotton, no stretch. Good for totes and patchwork.</p>
-
-                            <div class="mt-3 flex items-center justify-between rounded-xl bg-forest-50 px-3 py-2">
-                                <span class="text-[11px] font-semibold text-forest-700">Request accepted</span>
-                                <div class="flex items-center gap-1">
-                                    <span class="h-1.5 w-1.5 rounded-full bg-forest-600"></span>
-                                    <span class="h-1.5 w-1.5 rounded-full bg-forest-600"></span>
-                                    <span class="h-1.5 w-1.5 rounded-full bg-forest-600"></span>
-                                    <span class="h-1.5 w-1.5 rounded-full bg-forest-200"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="mt-8 flex flex-wrap items-center gap-3" data-reveal>
+                <a href="{{ route('register') }}" class="btn-primary px-5 py-3 text-[15px]" data-press>
+                    Donate clothes
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+                <a href="{{ route('browse.index') }}" class="btn-secondary px-5 py-3 text-[15px]">
+                    Browse donations
+                </a>
             </div>
+
+            <p class="mt-6 flex items-center gap-2 text-xs text-ink-muted" data-reveal>
+                <svg class="h-3.5 w-3.5 text-forest-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                Free for donors and upcyclers. No fees, no shipping, everything stays local.
+            </p>
         </div>
     </section>
 
     {{-- Impact strip --}}
-    <section class="border-y border-sand-300/70 bg-white/60">
+    <section class="border-y border-sand-300">
         <div class="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-8 sm:px-6 lg:grid-cols-4 lg:px-8">
             @foreach ([
                 ['label' => 'Textiles diverted', 'value' => number_format($stats['kg'], 0) . ' kg', 'count' => round($stats['kg']), 'suffix' => ' kg'],
@@ -109,7 +60,7 @@
     <section id="how-it-works" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div class="max-w-2xl">
             <span class="eyebrow" data-reveal>How it works</span>
-            <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl" data-reveal>
+            <h2 class="mt-4 font-display text-3xl font-medium leading-[1.1] tracking-[-0.02em] sm:text-4xl" data-reveal>
                 Two people, one bag of fabric, six honest steps.
             </h2>
             <p class="mt-3 text-base text-ink-muted" data-reveal>
@@ -172,7 +123,7 @@
     <section class="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-end justify-between gap-4">
             <div>
-                <h2 class="text-2xl font-extrabold tracking-tight sm:text-3xl" data-reveal>Available right now</h2>
+                <h2 class="font-display text-2xl font-medium tracking-[-0.02em] sm:text-3xl" data-reveal>Available right now</h2>
                 <p class="mt-2 text-sm text-ink-muted" data-reveal>Textiles waiting for a maker in Lapu-Lapu City.</p>
             </div>
             <a href="{{ route('browse.index') }}" class="btn-secondary">See the full feed</a>
@@ -198,10 +149,10 @@
 
     {{-- Closing CTA --}}
     <section class="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="overflow-hidden rounded-[1.75rem] border border-forest-200 bg-forest-600 p-8 sm:p-12" data-reveal>
+        <div class="overflow-hidden rounded-2xl border border-forest-200 bg-forest-600 p-8 sm:p-12" data-reveal>
             <div class="grid items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
                 <div>
-                    <h2 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+                    <h2 class="font-display text-2xl font-medium leading-[1.15] tracking-[-0.02em] text-white sm:text-3xl">
                         2.7 million tonnes of textile waste a year. Lapu-Lapu can keep some of it.
                     </h2>
                     <p class="mt-3 max-w-xl text-sm leading-relaxed text-forest-50/90">

@@ -6,11 +6,10 @@
     <div class="card p-7 sm:p-9">
         <div class="flex flex-col items-center text-center">
             <span class="eyebrow">
-                <span class="h-1.5 w-1.5 rounded-full bg-forest-500"></span>
                 Join the hub
             </span>
 
-            <h1 class="mt-4 text-2xl font-extrabold tracking-tight sm:text-[1.7rem]">Create your account</h1>
+            <h1 class="mt-4 text-2xl font-medium tracking-tight sm:text-[1.7rem]">Create your account</h1>
             <p class="mt-2 max-w-sm text-sm leading-relaxed text-ink-muted">
                 One account, one role. You can always contact an admin if you need to change later.
             </p>

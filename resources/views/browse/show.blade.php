@@ -47,7 +47,7 @@
                         <span class="text-xs text-ink-faint">Listed {{ $donation->created_at->diffForHumans() }}</span>
                     </div>
 
-                    <h1 class="mt-3 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">{{ $donation->title }}</h1>
+                    <h1 class="mt-3 text-2xl font-medium leading-tight tracking-tight sm:text-3xl">{{ $donation->title }}</h1>
                     <p class="mt-3 whitespace-pre-line text-sm leading-relaxed text-ink-soft">{{ $donation->description }}</p>
 
                     <dl class="mt-6 grid gap-4 border-t border-sand-200 pt-5 sm:grid-cols-2">
@@ -78,7 +78,7 @@
 
                 {{-- Progress --}}
                 <div class="card p-6" data-reveal>
-                    <h2 class="text-sm font-bold">Donation progress</h2>
+                    <h2 class="font-sans text-sm font-bold">Donation progress</h2>
                     <p class="text-xs text-ink-muted">Visible to everyone, so nobody has to ask “what happened?”</p>
                     <x-stepper :donation="$donation" class="mt-5" />
                 </div>
@@ -105,7 +105,7 @@
                 {{-- Action panel --}}
                 <div class="card p-5" data-reveal>
                     @guest
-                        <h2 class="text-sm font-bold">Want this bundle?</h2>
+                        <h2 class="font-sans text-sm font-bold">Want this bundle?</h2>
                         <p class="mt-1.5 text-xs leading-relaxed text-ink-muted">
                             Upcycler accounts are verified by an admin so donors know their fabric goes to a real maker.
                         </p>
@@ -118,7 +118,7 @@
 
                         @if ($myRequest)
                             <div class="flex items-center justify-between gap-2">
-                                <h2 class="text-sm font-bold">Your request</h2>
+                                <h2 class="font-sans text-sm font-bold">Your request</h2>
                                 <span class="{{ $myRequest->status->badge() }}">{{ $myRequest->status->label() }}</span>
                             </div>
                             <p class="mt-2 text-xs leading-relaxed text-ink-muted">
@@ -146,7 +146,7 @@
                                 </form>
                             @endif
                         @elseif ($canRequest)
-                            <h2 class="text-sm font-bold">Request this bundle</h2>
+                            <h2 class="font-sans text-sm font-bold">Request this bundle</h2>
                             <p class="mt-1.5 text-xs leading-relaxed text-ink-muted">
                                 Tell the donor what you will make with it. Specifics get accepted.
                             </p>
@@ -159,7 +159,7 @@
                                 <button type="submit" class="btn-primary w-full" data-press>Send request</button>
                             </form>
                         @else
-                            <h2 class="text-sm font-bold">Not available to you</h2>
+                            <h2 class="font-sans text-sm font-bold">Not available to you</h2>
                             <p class="mt-1.5 text-xs leading-relaxed text-ink-muted">
                                 @if ($user->isDonor())
                                     You are signed in as a donor. Switch to an upcycler account to request bundles.

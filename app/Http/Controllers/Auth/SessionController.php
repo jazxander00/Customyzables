@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
@@ -57,6 +59,28 @@ class SessionController extends Controller
         return redirect()
             ->intended(route($user->role->dashboardRoute()))
             ->with('status', 'Signed in as ' . $user->name . '.');
+    }
+
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback(Request $request)
+    {
+        $googleUser = Socialite::driver('google')->user();
+
+        $user = User::firstOrCreate(
+            ['email' => $googleUser->getEmail()],
+            ['name' => $googleUser->getName(), 'password' => Str::random(24), 'role' => 'donor']
+        );
+
+        Auth::login($user);
+        $request->session()->regenerate();
+
+        return redirect()
+            ->route($user->role->dashboardRoute())
+            ->with('status', 'Signed in with Google as ' . $user->name . '.');
     }
 
     public function destroy(Request $request): RedirectResponse

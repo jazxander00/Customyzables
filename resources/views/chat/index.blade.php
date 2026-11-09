@@ -5,7 +5,7 @@
 @section('content')
     <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
         <div data-reveal>
-            <h1 class="text-3xl font-extrabold tracking-tight">Messages</h1>
+            <h1 class="text-3xl font-medium tracking-tight">Messages</h1>
             <p class="mt-2 text-sm text-ink-muted">One conversation per donation, so the context never gets lost.</p>
         </div>
 

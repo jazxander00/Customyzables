@@ -6,7 +6,7 @@
     <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
         <div data-reveal>
             <a href="{{ route('admin.dashboard') }}" class="text-xs font-semibold text-ink-muted hover:text-ink">&larr; Admin dashboard</a>
-            <h1 class="mt-2 text-3xl font-extrabold tracking-tight">Audit trail</h1>
+            <h1 class="mt-2 text-3xl font-medium tracking-tight">Audit trail</h1>
             <p class="mt-2 max-w-xl text-sm text-ink-muted">
                 Every privileged action — verifications, suspensions, removals, and status changes — with the actor and timestamp.
             </p>

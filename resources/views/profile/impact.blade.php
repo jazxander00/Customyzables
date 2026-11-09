@@ -7,10 +7,9 @@
         <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
             <div>
                 <span class="eyebrow">
-                    <span class="h-1.5 w-1.5 rounded-full bg-forest-500"></span>
                     {{ $user->isDonor() ? 'Donor record' : 'Upcycler record' }}
                 </span>
-                <h1 class="mt-3 text-3xl font-extrabold tracking-tight">Your impact</h1>
+                <h1 class="mt-3 text-3xl font-medium tracking-tight">Your impact</h1>
                 <p class="mt-2 max-w-xl text-sm text-ink-muted">
                     {{ $user->isDonor()
                         ? 'Every kilogram here left your closet and went into someone’s work.'
@@ -32,7 +31,7 @@
 
         <div class="mt-8 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
             <section class="card p-6" data-reveal>
-                <h2 class="text-sm font-bold">Month by month</h2>
+                <h2 class="font-sans text-sm font-bold">Month by month</h2>
                 <p class="text-xs text-ink-muted">Kilograms received or completed, by month posted.</p>
 
                 @if ($monthly->isEmpty())
@@ -59,7 +58,7 @@
 
             <section class="card overflow-hidden" data-reveal>
                 <div class="border-b border-sand-200 px-5 py-4">
-                    <h2 class="text-sm font-bold">Completed exchanges</h2>
+                    <h2 class="font-sans text-sm font-bold">Completed exchanges</h2>
                     <p class="text-xs text-ink-muted">{{ $completed->count() }} {{ Str::plural('donation', $completed->count()) }}</p>
                 </div>
 
