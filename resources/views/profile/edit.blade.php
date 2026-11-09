@@ -5,7 +5,7 @@
 @section('content')
     <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
         <div data-reveal>
-            <h1 class="text-3xl font-extrabold tracking-tight">Profile settings</h1>
+            <h1 class="text-3xl font-medium tracking-tight">Profile settings</h1>
             <p class="mt-2 text-sm text-ink-muted">Your role is {{ strtolower(auth()->user()->role->label()) }} — contact an admin to change it.</p>
         </div>
 
@@ -82,7 +82,7 @@
                     @csrf
                     @method('PUT')
 
-                    <h2 class="text-sm font-bold">Change password</h2>
+                    <h2 class="font-sans text-sm font-bold">Change password</h2>
 
                     <div class="mt-4 space-y-3">
                         <div>
@@ -109,7 +109,7 @@
                 </form>
 
                 <div class="card-flat p-5" data-reveal>
-                    <h2 class="text-sm font-bold">Your impact</h2>
+                    <h2 class="font-sans text-sm font-bold">Your impact</h2>
                     <p class="mt-1.5 text-xs leading-relaxed text-ink-muted">
                         @if (auth()->user()->isDonor())
                             {{ round(auth()->user()->donatedWeight(), 1) }} kg handed over so far.

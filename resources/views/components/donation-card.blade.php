@@ -5,14 +5,14 @@
     $image = $donation->displayImage();
 @endphp
 
-<article class="group card overflow-hidden transition duration-300 ease-soft hover:-translate-y-0.5 hover:shadow-lift">
+<article class="group card overflow-hidden">
     <a href="{{ $href }}" class="block">
         <div class="relative aspect-[4/3] overflow-hidden bg-sand-200">
             @if ($image)
                 <img src="{{ $image }}" alt="{{ $donation->title }}"
                      class="h-full w-full object-cover transition duration-500 ease-soft group-hover:scale-[1.03]" loading="lazy">
             @else
-                <div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-sand-200 via-sand-100 to-clay-100">
+                <div class="flex h-full w-full items-center justify-center bg-sand-200">
                     <svg class="h-10 w-10 text-sand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 4.5-4.5L13 17l3-3 4 4"/>
                     </svg>
@@ -20,13 +20,13 @@
             @endif
 
             <div class="absolute left-3 top-3 flex flex-wrap gap-1.5">
-                <span class="badge bg-white/95 text-ink shadow-sm">{{ $donation->weightLabel() }}</span>
-                <span class="badge bg-white/95 text-ink-muted shadow-sm">{{ $donation->conditionLabel() }}</span>
+                <span class="badge bg-white/95 text-ink">{{ $donation->weightLabel() }}</span>
+                <span class="badge bg-white/95 text-ink-muted">{{ $donation->conditionLabel() }}</span>
             </div>
 
             @if ($donation->status !== \App\Enums\DonationStatus::Listed)
                 <div class="absolute right-3 top-3">
-                    <x-status-badge :status="$donation->status" class="shadow-sm" />
+                    <x-status-badge :status="$donation->status" />
                 </div>
             @endif
         </div>

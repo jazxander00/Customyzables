@@ -6,7 +6,7 @@
     <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <div data-reveal>
             <a href="{{ route('admin.dashboard') }}" class="text-xs font-semibold text-ink-muted hover:text-ink">&larr; Admin dashboard</a>
-            <h1 class="mt-2 text-3xl font-extrabold tracking-tight">Donations</h1>
+            <h1 class="mt-2 text-3xl font-medium tracking-tight">Donations</h1>
             <p class="mt-2 text-sm text-ink-muted">Review what is posted. Removing a donation writes an audit entry.</p>
         </div>
 
@@ -37,7 +37,7 @@
                                         @if ($donation->displayImage())
                                             <img src="{{ $donation->displayImage() }}" alt="" class="h-full w-full object-cover">
                                         @else
-                                            <div class="h-full w-full bg-gradient-to-br from-sand-200 to-clay-100"></div>
+                                            <div class="h-full w-full bg-sand-200"></div>
                                         @endif
                                     </div>
                                     <div class="min-w-0">

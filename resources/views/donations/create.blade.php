@@ -9,7 +9,7 @@
         <div class="flex flex-wrap items-end justify-between gap-3" data-reveal>
             <div>
                 <a href="{{ route('donations.index') }}" class="text-xs font-semibold text-ink-muted hover:text-ink">&larr; My donations</a>
-                <h1 class="mt-2 text-3xl font-extrabold tracking-tight">{{ $editing ? 'Edit donation' : 'Post a donation' }}</h1>
+                <h1 class="mt-2 text-3xl font-medium tracking-tight">{{ $editing ? 'Edit donation' : 'Post a donation' }}</h1>
                 <p class="mt-2 max-w-xl text-sm text-ink-muted">
                     Three short steps. The more honest the condition description, the better the requests you get.
                 </p>
@@ -33,7 +33,7 @@
                 <section class="card p-6" data-reveal>
                     <div class="flex items-center gap-2.5">
                         <span class="flex h-7 w-7 items-center justify-center rounded-full bg-clay-100 text-[11px] font-bold text-clay-700">1</span>
-                        <h2 class="text-sm font-bold">What are you giving?</h2>
+                        <h2 class="font-sans text-sm font-bold">What are you giving?</h2>
                     </div>
 
                     <div class="mt-5 space-y-4">
@@ -84,7 +84,7 @@
                 <section class="card p-6" data-reveal>
                     <div class="flex items-center gap-2.5">
                         <span class="flex h-7 w-7 items-center justify-center rounded-full bg-clay-100 text-[11px] font-bold text-clay-700">2</span>
-                        <h2 class="text-sm font-bold">How much, and what does it look like?</h2>
+                        <h2 class="font-sans text-sm font-bold">How much, and what does it look like?</h2>
                     </div>
 
                     <div class="mt-5 space-y-4">
@@ -122,7 +122,7 @@
                 <section class="card p-6" data-reveal>
                     <div class="flex items-center gap-2.5">
                         <span class="flex h-7 w-7 items-center justify-center rounded-full bg-clay-100 text-[11px] font-bold text-clay-700">3</span>
-                        <h2 class="text-sm font-bold">Where and when can they collect?</h2>
+                        <h2 class="font-sans text-sm font-bold">Where and when can they collect?</h2>
                     </div>
 
                     <div class="mt-5 space-y-4">
@@ -180,7 +180,7 @@
             {{-- Summary --}}
             <aside class="space-y-4 lg:sticky lg:top-24 lg:self-start">
                 <div class="card p-5" data-reveal>
-                    <h2 class="text-sm font-bold">{{ $editing ? 'Before you save' : 'Before you publish' }}</h2>
+                    <h2 class="font-sans text-sm font-bold">{{ $editing ? 'Before you save' : 'Before you publish' }}</h2>
                     <ul class="mt-3 space-y-2.5 text-xs leading-relaxed text-ink-muted">
                         <li class="flex gap-2"><span class="text-forest-600">✓</span> Photos show the real condition, not a stock image.</li>
                         <li class="flex gap-2"><span class="text-forest-600">✓</span> The weight is close — upcyclers plan by kilograms.</li>

@@ -43,20 +43,22 @@ module.exports = {
                     DEFAULT: '#2B2724',
                     soft: '#4A443F',
                     muted: '#6F6862',
-                    faint: '#9A918A',
+                    // Darkened from #9A918A: that failed 4.5:1 on sand and white.
+                    faint: '#767066',
                 },
             },
             fontFamily: {
                 sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-                display: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                // Editorial display face: headings only, body stays sans for UI density.
+                display: ['Fraunces', 'Georgia', 'Cambria', 'serif'],
             },
             borderRadius: {
-                card: '1.25rem',
+                card: '0.75rem',
                 pill: '999px',
             },
             boxShadow: {
-                card: '0 1px 2px rgba(43, 39, 36, 0.04), 0 8px 24px -12px rgba(43, 39, 36, 0.12)',
-                lift: '0 18px 40px -18px rgba(43, 39, 36, 0.28)',
+                card: '0 1px 2px rgba(43, 39, 36, 0.05)',
+                lift: '0 14px 30px -20px rgba(43, 39, 36, 0.28)',
                 ring: '0 0 0 4px rgba(222, 122, 90, 0.16)',
             },
             transitionTimingFunction: {

@@ -6,7 +6,7 @@
     <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-end justify-between gap-4">
             <div data-reveal>
-                <h1 class="text-3xl font-extrabold tracking-tight">My donations</h1>
+                <h1 class="text-3xl font-medium tracking-tight">My donations</h1>
                 <p class="mt-2 text-sm text-ink-muted">Everything you have posted, and where each bundle stands.</p>
             </div>
             <a href="{{ route('donations.create') }}" class="btn-primary" data-press>
@@ -42,7 +42,7 @@
                                 @if ($donation->displayImage())
                                     <img src="{{ $donation->displayImage() }}" alt="{{ $donation->title }}" class="h-full w-full object-cover">
                                 @else
-                                    <div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-sand-200 via-sand-100 to-clay-100">
+                                    <div class="flex h-full w-full items-center justify-center bg-sand-200">
                                         <svg class="h-9 w-9 text-sand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 4.5-4.5L13 17l3-3 4 4"/></svg>
                                     </div>
                                 @endif

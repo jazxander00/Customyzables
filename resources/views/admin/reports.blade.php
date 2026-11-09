@@ -7,7 +7,7 @@
         <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
             <div>
                 <a href="{{ route('admin.dashboard') }}" class="text-xs font-semibold text-ink-muted hover:text-ink">&larr; Admin dashboard</a>
-                <h1 class="mt-2 text-3xl font-extrabold tracking-tight">Reports</h1>
+                <h1 class="mt-2 text-3xl font-medium tracking-tight">Reports</h1>
                 <p class="mt-2 max-w-xl text-sm text-ink-muted">
                     Summary, transaction history, and user activity for the selected period. Every figure comes live from the database.
                 </p>
@@ -38,7 +38,7 @@
 
         <div class="mt-8 grid gap-6 lg:grid-cols-[1.3fr_1fr]">
             <section class="card p-5" data-reveal>
-                <h2 class="text-sm font-bold">Donations per month</h2>
+                <h2 class="font-sans text-sm font-bold">Donations per month</h2>
                 <p class="text-xs text-ink-muted">Volume posted, with total kilograms</p>
 
                 @if ($monthly->isEmpty())
@@ -62,7 +62,7 @@
             </section>
 
             <section class="card p-5" data-reveal>
-                <h2 class="text-sm font-bold">Donations by fibre</h2>
+                <h2 class="font-sans text-sm font-bold">Donations by fibre</h2>
                 <p class="text-xs text-ink-muted">Where the material comes from</p>
 
                 @if ($byCategory->isEmpty())
@@ -88,7 +88,7 @@
 
         <section class="card mt-6 overflow-hidden" data-reveal>
             <div class="border-b border-sand-200 px-5 py-4">
-                <h2 class="text-sm font-bold">Transaction history</h2>
+                <h2 class="font-sans text-sm font-bold">Transaction history</h2>
                 <p class="text-xs text-ink-muted">Every request joined to its donation, donor, and upcycler</p>
             </div>
 
@@ -128,7 +128,7 @@
 
         <section class="card mt-6 overflow-hidden" data-reveal>
             <div class="border-b border-sand-200 px-5 py-4">
-                <h2 class="text-sm font-bold">User activity</h2>
+                <h2 class="font-sans text-sm font-bold">User activity</h2>
                 <p class="text-xs text-ink-muted">Privileged actions grouped by actor, including system events</p>
             </div>
 

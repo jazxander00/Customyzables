@@ -7,7 +7,7 @@
         <div class="flex flex-wrap items-end justify-between gap-4">
             <div data-reveal>
                 <p class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-faint">{{ now()->format('l, F j') }}</p>
-                <h1 class="mt-1.5 text-3xl font-extrabold tracking-tight">Good to see you, {{ Str::of($user->name)->explode(' ')->first() }}.</h1>
+                <h1 class="mt-1.5 text-3xl font-medium tracking-tight">Good to see you, {{ Str::of($user->name)->explode(' ')->first() }}.</h1>
                 <p class="mt-2 max-w-xl text-sm text-ink-muted">
                     Everything you have listed, everything waiting on your answer, and the weight you have kept out of landfill.
                 </p>
@@ -34,7 +34,7 @@
             <section class="card overflow-hidden" data-reveal>
                 <div class="flex items-center justify-between gap-3 border-b border-sand-200 px-5 py-4">
                     <div>
-                        <h2 class="text-sm font-bold">Your latest donations</h2>
+                        <h2 class="font-sans text-sm font-bold">Your latest donations</h2>
                         <p class="text-xs text-ink-muted">Newest first</p>
                     </div>
                     <a href="{{ route('donations.index') }}" class="text-xs font-semibold text-clay-700 hover:underline">View all</a>
@@ -57,7 +57,7 @@
                                     @if ($donation->displayImage())
                                         <img src="{{ $donation->displayImage() }}" alt="" class="h-full w-full object-cover">
                                     @else
-                                        <div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-sand-200 to-clay-100">
+                                        <div class="flex h-full w-full items-center justify-center bg-sand-200">
                                             <svg class="h-5 w-5 text-sand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 4.5-4.5L13 17l3-3 4 4"/></svg>
                                         </div>
                                     @endif
@@ -91,7 +91,7 @@
             {{-- Activity --}}
             <aside class="space-y-6">
                 <section class="card p-5" data-reveal>
-                    <h2 class="text-sm font-bold">Recent activity</h2>
+                    <h2 class="font-sans text-sm font-bold">Recent activity</h2>
                     <p class="text-xs text-ink-muted">Status changes across your donations</p>
 
                     @if ($activity->isEmpty())
@@ -120,7 +120,7 @@
                 </section>
 
                 <section class="card-flat p-5" data-reveal>
-                    <h2 class="text-sm font-bold">Keep it moving</h2>
+                    <h2 class="font-sans text-sm font-bold">Keep it moving</h2>
                     <p class="mt-1.5 text-xs leading-relaxed text-ink-muted">
                         Donations left in <span class="font-semibold text-ink-soft">Requested</span> for more than a week
                         tend to go cold. Answer within a day or two and both sides stay interested.

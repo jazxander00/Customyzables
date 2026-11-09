@@ -5,7 +5,7 @@
 @section('content')
     <div class="card p-8 text-center sm:p-9">
         <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-ink-faint">404</p>
-        <h1 class="mt-3 text-2xl font-extrabold tracking-tight">This page has been upcycled</h1>
+        <h1 class="mt-3 text-2xl font-medium tracking-tight">This page has been upcycled</h1>
         <p class="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-ink-muted">
             The link is broken or the listing is gone. Plenty of fabric is still waiting in the feed.
         </p>

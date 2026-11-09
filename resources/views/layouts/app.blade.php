@@ -10,7 +10,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -24,12 +24,12 @@
         Skip to content
     </a>
 
-    <header class="sticky top-0 z-40 border-b border-sand-300/70 bg-sand-100/85 backdrop-blur-md">
+    <header class="sticky top-0 z-40 border-b border-sand-300 bg-sand-100">
         <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
             <div class="flex items-center gap-8">
                 <a href="{{ route('home') }}" class="flex items-center gap-2.5" aria-label="Customyzables home">
                     <x-logo class="h-9 w-9" />
-                    <span class="text-[15px] font-extrabold tracking-tight text-ink">Customyzables</span>
+                    <span class="font-display text-[17px] font-semibold tracking-tight text-ink">Customyzables</span>
                 </a>
 
                 @auth
@@ -167,7 +167,7 @@
             </div>
 
             <div>
-                <h3 class="text-xs font-bold uppercase tracking-[0.14em] text-ink-faint">Lapu-Lapu barangays</h3>
+                <p class="text-xs font-bold uppercase tracking-[0.14em] text-ink-faint">Lapu-Lapu barangays</p>
                 <ul class="mt-3 space-y-2 text-sm text-ink-muted">
                     <li>Pajo &amp; Poblacion collection</li>
                     <li>Basak Upcycling Hub</li>
@@ -177,7 +177,7 @@
             </div>
 
             <div>
-                <h3 class="text-xs font-bold uppercase tracking-[0.14em] text-ink-faint">Community &amp; resources</h3>
+                <p class="text-xs font-bold uppercase tracking-[0.14em] text-ink-faint">Community &amp; resources</p>
                 <ul class="mt-3 space-y-2 text-sm text-ink-muted">
                     <li><a href="{{ route('browse.index') }}" class="hover:text-ink">Browse donations</a></li>
                     <li><a href="{{ route('home') }}#how-it-works" class="hover:text-ink">How it works</a></li>

@@ -24,6 +24,9 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
     Route::get('/login', [SessionController::class, 'create'])->name('login');
     Route::post('/login', [SessionController::class, 'store'])->name('login.store');
+
+    Route::get('/auth/google', [SessionController::class, 'redirectToGoogle'])->name('auth.google');
+    Route::get('/auth/google/callback', [SessionController::class, 'handleGoogleCallback'])->name('auth.google.callback');
 });
 
 Route::middleware('auth')->group(function () {

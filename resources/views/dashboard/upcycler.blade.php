@@ -9,7 +9,7 @@
                 <p class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-faint">
                     {{ $user->barangay ? $user->barangay . ' · ' : '' }}Lapu-Lapu City
                 </p>
-                <h1 class="mt-1.5 text-3xl font-extrabold tracking-tight">{{ $user->organization ?: Str::of($user->name)->explode(' ')->first() . '’s studio feed' }}</h1>
+                <h1 class="mt-1.5 text-3xl font-medium tracking-tight">{{ $user->organization ?: Str::of($user->name)->explode(' ')->first() . '’s studio feed' }}</h1>
                 <p class="mt-2 max-w-xl text-sm text-ink-muted">
                     Textile donations posted by households and businesses across the island, newest first.
                 </p>
@@ -52,7 +52,7 @@
             <section data-reveal>
                 <div class="flex items-end justify-between gap-3">
                     <div>
-                        <h2 class="text-lg font-extrabold tracking-tight">Fresh in the feed</h2>
+                        <h2 class="text-lg font-medium tracking-tight">Fresh in the feed</h2>
                         <p class="text-xs text-ink-muted">The newest six bundles across the island.</p>
                     </div>
                     <a href="{{ route('browse.index') }}" class="text-xs font-semibold text-clay-700 hover:underline">See all</a>
@@ -80,7 +80,7 @@
                 <section class="card overflow-hidden" data-reveal>
                     <div class="flex items-center justify-between gap-3 border-b border-sand-200 px-5 py-4">
                         <div>
-                            <h2 class="text-sm font-bold">Your requests</h2>
+                            <h2 class="font-sans text-sm font-bold">Your requests</h2>
                             <p class="text-xs text-ink-muted">Newest first</p>
                         </div>
                         <a href="{{ route('requests.index') }}" class="text-xs font-semibold text-clay-700 hover:underline">All</a>
@@ -116,7 +116,7 @@
                 </section>
 
                 <section class="card-flat p-5" data-reveal>
-                    <h2 class="text-sm font-bold">What donors look for</h2>
+                    <h2 class="font-sans text-sm font-bold">What donors look for</h2>
                     <ul class="mt-3 space-y-2 text-xs leading-relaxed text-ink-muted">
                         <li class="flex gap-2"><span class="text-forest-600">·</span> A specific plan — “15 tote bags”, not “crafts”.</li>
                         <li class="flex gap-2"><span class="text-forest-600">·</span> How you will collect, and when.</li>

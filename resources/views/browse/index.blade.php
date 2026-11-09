@@ -5,14 +5,13 @@
 @section('content')
     <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         {{-- Feed header --}}
-        <div class="rounded-[1.5rem] border border-sand-300/80 bg-white p-6 sm:p-8" data-reveal>
+        <div class="rounded-2xl border border-sand-300 bg-white p-6 sm:p-8" data-reveal>
             <div class="flex flex-wrap items-start justify-between gap-6">
                 <div>
                     <span class="eyebrow">
-                        <span class="h-1.5 w-1.5 rounded-full bg-forest-500"></span>
                         Lapu-Lapu City
                     </span>
-                    <h1 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Upcycler studio feed</h1>
+                    <h1 class="mt-4 font-display text-3xl font-medium tracking-[-0.02em] sm:text-4xl">Upcycler studio feed</h1>
                     <p class="mt-2 max-w-xl text-sm leading-relaxed text-ink-muted">
                         Discover available textile donations posted by households, schools, and businesses across Mactan Island.
                     </p>
@@ -83,6 +82,9 @@
                 @endif
             @endauth
         </div>
+
+        {{-- Screen-reader heading: the cards below use h3, which needs an h2 above them. --}}
+        <h2 class="sr-only">Available bundles</h2>
 
         @if ($donations->isEmpty())
             <div class="mt-4">

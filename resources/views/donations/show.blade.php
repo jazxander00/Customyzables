@@ -13,7 +13,7 @@
                     <span class="text-xs text-ink-faint">Posted {{ $donation->created_at->diffForHumans() }}</span>
                     <span class="text-xs text-ink-faint">· {{ $donation->views }} {{ Str::plural('view', $donation->views) }}</span>
                 </div>
-                <h1 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">{{ $donation->title }}</h1>
+                <h1 class="mt-2 text-2xl font-medium tracking-tight sm:text-3xl">{{ $donation->title }}</h1>
                 <p class="mt-1 text-sm text-ink-muted">
                     {{ $donation->categoryLabel() }} · {{ $donation->weightLabel() }} · {{ $donation->item_count }} {{ Str::plural('item', $donation->item_count) }} · {{ $donation->barangay }}
                 </p>
@@ -47,7 +47,7 @@
             <div class="space-y-6">
                 {{-- Progress --}}
                 <section class="card p-6" data-reveal>
-                    <h2 class="text-sm font-bold">Progress</h2>
+                    <h2 class="font-sans text-sm font-bold">Progress</h2>
                     <p class="text-xs text-ink-muted">The upcycler sees exactly the same stepper.</p>
                     <x-stepper :donation="$donation" class="mt-5" />
                 </section>
@@ -56,7 +56,7 @@
                 <section class="card overflow-hidden" data-reveal>
                     <div class="flex items-center justify-between gap-3 border-b border-sand-200 px-5 py-4">
                         <div>
-                            <h2 class="text-sm font-bold">Requests</h2>
+                            <h2 class="font-sans text-sm font-bold">Requests</h2>
                             <p class="text-xs text-ink-muted">{{ $donation->requests->count() }} {{ Str::plural('upcycler', $donation->requests->count()) }} interested</p>
                         </div>
                         @if ($donation->pendingRequests()->count() > 0)
@@ -149,7 +149,7 @@
 
                 {{-- Details --}}
                 <section class="card p-6" data-reveal>
-                    <h2 class="text-sm font-bold">Listing details</h2>
+                    <h2 class="font-sans text-sm font-bold">Listing details</h2>
                     <p class="mt-3 whitespace-pre-line text-sm leading-relaxed text-ink-soft">{{ $donation->description }}</p>
 
                     <dl class="mt-5 grid gap-4 border-t border-sand-200 pt-5 sm:grid-cols-3">
@@ -188,7 +188,7 @@
                             </div>
                         @endif
                     @else
-                        <div class="flex aspect-[4/3] w-full items-center justify-center bg-gradient-to-br from-sand-200 to-clay-100">
+                        <div class="flex aspect-[4/3] w-full items-center justify-center bg-sand-200">
                             <svg class="h-10 w-10 text-sand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 4.5-4.5L13 17l3-3 4 4"/></svg>
                         </div>
                     @endif
@@ -196,7 +196,7 @@
 
                 {{-- Timeline --}}
                 <section class="card p-5" data-reveal>
-                    <h2 class="text-sm font-bold">Activity log</h2>
+                    <h2 class="font-sans text-sm font-bold">Activity log</h2>
                     <ol class="mt-4 space-y-4">
                         @forelse ($donation->events as $event)
                             <li class="flex gap-3">

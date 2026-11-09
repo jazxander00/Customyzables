@@ -6,11 +6,10 @@
     <div class="card p-7 sm:p-9">
         <div class="flex flex-col items-center text-center">
             <span class="eyebrow">
-                <span class="h-1.5 w-1.5 rounded-full bg-forest-500"></span>
                 Lapu-Lapu circular hub
             </span>
 
-            <h1 class="mt-4 text-2xl font-extrabold tracking-tight sm:text-[1.7rem]">Welcome back</h1>
+            <h1 class="mt-4 text-2xl font-medium tracking-tight sm:text-[1.7rem]">Welcome back</h1>
             <p class="mt-2 max-w-xs text-sm leading-relaxed text-ink-muted">
                 Sign in to connect with Lapu-Lapu City's textile upcycling community.
             </p>
@@ -76,12 +75,11 @@
             <span class="h-px flex-1 bg-sand-300"></span>
         </div>
 
-        <button type="button" disabled
-                class="flex w-full cursor-not-allowed items-center justify-center gap-2.5 rounded-xl border border-sand-300 bg-white px-4 py-3 text-sm font-semibold text-ink-faint"
-                title="Google sign-in is not enabled for this deployment yet">
+        <a href="{{ route('auth.google') }}"
+           class="flex w-full items-center justify-center gap-2.5 rounded-xl border border-sand-300 bg-white px-4 py-3 text-sm font-semibold hover:bg-sand-50 transition-colors">
             <svg class="h-4 w-4" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 10.2v3.9h5.5c-.24 1.4-1.7 4.1-5.5 4.1-3.3 0-6-2.7-6-6.1s2.7-6.1 6-6.1c1.9 0 3.1.8 3.9 1.5l2.6-2.5C16.9 3.4 14.7 2.4 12 2.4 6.7 2.4 2.4 6.7 2.4 12s4.3 9.6 9.6 9.6c5.5 0 9.2-3.9 9.2-9.4 0-.7-.1-1.3-.2-1.9H12Z"/></svg>
             Continue with Google
-        </button>
+        </a>
 
         <p class="mt-6 text-center text-sm text-ink-muted">
             Don't have an account?

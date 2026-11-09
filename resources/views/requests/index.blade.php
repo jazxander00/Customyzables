@@ -6,7 +6,7 @@
     <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
             <div>
-                <h1 class="text-3xl font-extrabold tracking-tight">My requests</h1>
+                <h1 class="text-3xl font-medium tracking-tight">My requests</h1>
                 <p class="mt-2 text-sm text-ink-muted">Everything you have asked for, and what each donor decided.</p>
             </div>
             <a href="{{ route('browse.index') }}" class="btn-secondary">Find more bundles</a>

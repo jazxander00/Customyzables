@@ -7,7 +7,7 @@
         <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
             <div>
                 <span class="eyebrow"><span class="h-1.5 w-1.5 rounded-full bg-clay-500"></span> Administration</span>
-                <h1 class="mt-3 text-3xl font-extrabold tracking-tight">Platform overview</h1>
+                <h1 class="mt-3 text-3xl font-medium tracking-tight">Platform overview</h1>
                 <p class="mt-2 max-w-xl text-sm text-ink-muted">
                     Verifications, moderation, and the numbers that tell you whether the hub is healthy.
                 </p>
@@ -30,7 +30,7 @@
             <section class="card overflow-hidden" data-reveal>
                 <div class="flex items-center justify-between gap-3 border-b border-sand-200 px-5 py-4">
                     <div>
-                        <h2 class="text-sm font-bold">Upcyclers awaiting verification</h2>
+                        <h2 class="font-sans text-sm font-bold">Upcyclers awaiting verification</h2>
                         <p class="text-xs text-ink-muted">They can browse but cannot request until approved</p>
                     </div>
                     <a href="{{ route('admin.users', ['role' => 'upcycler']) }}" class="text-xs font-semibold text-clay-700 hover:underline">All upcyclers</a>
@@ -61,7 +61,7 @@
             </section>
 
             <section class="card p-5" data-reveal>
-                <h2 class="text-sm font-bold">Donations by fibre</h2>
+                <h2 class="font-sans text-sm font-bold">Donations by fibre</h2>
                 <p class="text-xs text-ink-muted">Where the material actually comes from</p>
 
                 @if ($byCategory->isEmpty())
@@ -88,7 +88,7 @@
         <section class="card mt-6 overflow-hidden" data-reveal>
             <div class="flex items-center justify-between gap-3 border-b border-sand-200 px-5 py-4">
                 <div>
-                    <h2 class="text-sm font-bold">Recent admin activity</h2>
+                    <h2 class="font-sans text-sm font-bold">Recent admin activity</h2>
                     <p class="text-xs text-ink-muted">Every privileged action is logged</p>
                 </div>
                 <a href="{{ route('admin.audit') }}" class="text-xs font-semibold text-clay-700 hover:underline">Full trail</a>
