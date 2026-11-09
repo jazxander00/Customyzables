@@ -39,6 +39,7 @@
                             <a href="{{ route('admin.users') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('admin.users')])>Users</a>
                             <a href="{{ route('admin.donations') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('admin.donations')])>Donations</a>
                             <a href="{{ route('admin.audit') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('admin.audit')])>Audit trail</a>
+                            <a href="{{ route('admin.reports') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('admin.reports*')])>Reports</a>
                         @else
                             <a href="{{ route(auth()->user()->role->dashboardRoute()) }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('dashboard.*')])>Dashboard</a>
                             <a href="{{ route('browse.index') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('browse.*')])>Browse</a>
@@ -75,6 +76,7 @@
                                     <a href="{{ route('admin.users') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('admin.users')])>Users</a>
                                     <a href="{{ route('admin.donations') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('admin.donations')])>Donations</a>
                                     <a href="{{ route('admin.audit') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('admin.audit')])>Audit trail</a>
+                            <a href="{{ route('admin.reports') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('admin.reports*')])>Reports</a>
                                 @else
                                     <a href="{{ route(auth()->user()->role->dashboardRoute()) }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('dashboard.*')])>Dashboard</a>
                                     <a href="{{ route('browse.index') }}" @class(['nav-link', 'nav-link-active' => request()->routeIs('browse.*')])>Browse</a>
