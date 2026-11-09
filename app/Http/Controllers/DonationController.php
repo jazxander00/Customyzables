@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Enums\DonationStatus;
 use App\Http\Requests\StoreDonationRequest;
-use App\Models\AuditLog;
 use App\Models\Donation;
 use App\Services\DonationWorkflow;
 use Illuminate\Contracts\View\View;
@@ -77,33 +76,6 @@ class DonationController extends Controller
         return redirect()
             ->route('donations.show', $donation)
             ->with('status', 'Your donation is live. Upcyclers nearby can now request it.');
-    }
-
-    public function edit(Request $request, Donation $donation): View
-    {
-        abort_unless($donation->user_id === $request->user()->id, 403);
-        abort_unless($donation->status === DonationStatus::Listed, 403, 'Only a listed donation can be edited.');
-
-        return view('donations.create', [
-            'donation' => $donation,
-            'categories' => Donation::CATEGORIES,
-            'conditions' => Donation::CONDITIONS,
-            'barangays' => Donation::BARANGAYS,
-        ]);
-    }
-
-    public function update(StoreDonationRequest $request, Donation $donation): RedirectResponse
-    {
-        abort_unless($donation->user_id === $request->user()->id, 403);
-        abort_unless($donation->status === DonationStatus::Listed, 403, 'Only a listed donation can be edited.');
-
-        $donation->update($request->safe()->except('images'));
-
-        AuditLog::record('donation.updated', $donation, ['title' => $donation->title], $request->user());
-
-        return redirect()
-            ->route('donations.show', $donation)
-            ->with('status', 'Donation updated.');
     }
 
     public function show(Request $request, Donation $donation): View

@@ -20,10 +20,6 @@
             </div>
 
             <div class="flex flex-wrap gap-2">
-                @if ($donation->status === \App\Enums\DonationStatus::Listed)
-                    <a href="{{ route('donations.edit', $donation) }}" class="btn-secondary">Edit</a>
-                @endif
-
                 <a href="{{ route('chat.show', $donation) }}" class="btn-secondary">Messages</a>
 
                 @if ($donation->status === \App\Enums\DonationStatus::Received)
