@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+        *{box-sizing:border-box}
+        body{margin:0;padding:48px 56px;background:#f8f5ef;color:#2b2b26;font-family:Georgia,'Times New Roman',serif}
+        .kicker{font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#a8988a}
+        h1{margin:8px 0 6px;font-size:30px;font-weight:500}
+        p.meta{margin:0 0 24px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#7a7168}
+        .card{background:#fff;border:1px solid #e6ded2;border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+        .bar{display:flex;gap:10px;align-items:center;padding:12px 18px;border-bottom:1px solid #e6ded2;background:#fdfbf7;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#6b625a}
+        .dot{width:8px;height:8px;border-radius:50%;background:#c96a4e}
+        code{font-family:Consolas,monospace;font-size:12px}
+        table{width:100%;border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;font-size:12.5px}
+        thead th{background:#f3ece1;text-align:left;padding:11px 18px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:#8b8178;border-bottom:1px solid #e6ded2}
+        tbody td{padding:11px 18px;border-bottom:1px solid #f0e9df;color:#3d3931}
+        tbody tr:last-child td{border-bottom:none}
+        tbody tr:nth-child(even){background:#fcfaf6}
+        .num{text-align:right}
+    </style></head><body>
+        <div class="kicker">Customyzables · Admin reports</div>
+        <h1>CSV export — transaction history</h1>
+        <p class="meta">Downloaded from <code>http://localhost:8000/admin/reports/export?from=2026-10-14&amp;to=2026-11-13</code> · HTTP 200 · text/csv; charset=UTF-8 · 5 data rows</p>
+        <div class="card">
+            <div class="bar"><span class="dot"></span><span><code>transactions.csv</code> — attachment; filename=customyzables-transactions-20261014-20261113.csv</span></div>
+            <table><thead><tr><th>Date</th><th>Donation</th><th>Donor</th><th>Upcycler</th><th>Status</th><th>Scheduled</th><th>Completed</th><th>Weight (kg)</th></tr></thead>
+            <tbody><tr><td class="">2026-11-12 16:13</td><td class="">Pre-loved denim jackets &amp; jeans (5 pcs)</td><td class="">Elaine Ena B. Villaluna</td><td class="">Kuya Ben</td><td class="">pending</td><td class=""></td><td class=""></td><td class="num">4.8</td></tr><tr><td class="">2026-11-12 12:13</td><td class="">Pre-loved denim jackets &amp; jeans (5 pcs)</td><td class="">Elaine Ena B. Villaluna</td><td class="">Johnriel Dave L. Legara</td><td class="">pending</td><td class=""></td><td class=""></td><td class="num">4.8</td></tr><tr><td class="">2026-11-09 12:13</td><td class="">Clean cotton T-shirts &amp; scraps (12 pcs)</td><td class="">Maria S. Dela Cruz</td><td class="">Johnriel Dave L. Legara</td><td class="">accepted</td><td class=""></td><td class=""></td><td class="num">3.2</td></tr><tr><td class="">2026-11-04 12:13</td><td class="">Curtain panels — heavy cotton canvas</td><td class="">Maria S. Dela Cruz</td><td class="">Johnriel Dave L. Legara</td><td class="">accepted</td><td class="">2026-11-15 09:30</td><td class=""></td><td class="num">7.2</td></tr><tr><td class="">2026-10-30 12:13</td><td class="">Denim offcuts from a tailoring shop</td><td class="">Kyra Bautista</td><td class="">Johnriel Dave L. Legara</td><td class="">completed</td><td class=""></td><td class="">2026-11-01 12:13</td><td class="num">8.4</td></tr></tbody></table>
+        </div>
+    </body></html>

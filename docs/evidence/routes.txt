@@ -1,0 +1,50 @@
+﻿
+  GET|HEAD  / .................................................................................. home ΓÇ║ HomeController
+  GET|HEAD  admin .................................................. admin.dashboard ΓÇ║ Admin\AdminController@dashboard
+  GET|HEAD  admin/audit .................................................... admin.audit ΓÇ║ Admin\AdminController@audit
+  GET|HEAD  admin/donations ........................................ admin.donations ΓÇ║ Admin\AdminController@donations
+  DELETE    admin/donations/{donation} ................. admin.donations.remove ΓÇ║ Admin\AdminController@removeDonation
+  GET|HEAD  admin/reports ............................................... admin.reports ΓÇ║ Admin\ReportController@index
+  GET|HEAD  admin/reports/export ................................ admin.reports.export ΓÇ║ Admin\ReportController@export
+  GET|HEAD  admin/users .................................................... admin.users ΓÇ║ Admin\AdminController@users
+  POST      admin/users/{user}/suspend ........................... admin.users.suspend ΓÇ║ Admin\AdminController@suspend
+  POST      admin/users/{user}/verify .............................. admin.users.verify ΓÇ║ Admin\AdminController@verify
+  GET|HEAD  api/user ................................................................................................. 
+  GET|HEAD  auth/google ........................................ auth.google ΓÇ║ Auth\SessionController@redirectToGoogle
+  GET|HEAD  auth/google/callback .................. auth.google.callback ΓÇ║ Auth\SessionController@handleGoogleCallback
+  GET|HEAD  browse ............................................................. browse.index ΓÇ║ BrowseController@index
+  GET|HEAD  browse/{donation} .................................................... browse.show ΓÇ║ BrowseController@show
+  GET|HEAD  chat ................................................................... chat.index ΓÇ║ ChatController@index
+  GET|HEAD  chat/{donation} .......................................................... chat.show ΓÇ║ ChatController@show
+  POST      chat/{donation} ........................................................ chat.store ΓÇ║ ChatController@store
+  GET|HEAD  dashboard ....................................................... dashboard ΓÇ║ DashboardController@redirect
+  GET|HEAD  dashboard/donor .............................................. dashboard.donor ΓÇ║ DashboardController@donor
+  GET|HEAD  dashboard/upcycler ..................................... dashboard.upcycler ΓÇ║ DashboardController@upcycler
+  GET|HEAD  donations ..................................................... donations.index ΓÇ║ DonationController@index
+  POST      donations ..................................................... donations.store ΓÇ║ DonationController@store
+  GET|HEAD  donations/create ............................................ donations.create ΓÇ║ DonationController@create
+  PUT       donations/{donation} ........................................ donations.update ΓÇ║ DonationController@update
+  GET|HEAD  donations/{donation} ............................................ donations.show ΓÇ║ DonationController@show
+  DELETE    donations/{donation} ...................................... donations.destroy ΓÇ║ DonationController@destroy
+  POST      donations/{donation}/cancel ................................. donations.cancel ΓÇ║ DonationController@cancel
+  POST      donations/{donation}/complete ............................ donations.complete ΓÇ║ RequestController@complete
+  GET|HEAD  donations/{donation}/edit ....................................... donations.edit ΓÇ║ DonationController@edit
+  POST      donations/{donation}/requests ................................... requests.store ΓÇ║ RequestController@store
+  GET|HEAD  impact ......................................................... profile.impact ΓÇ║ ProfileController@impact
+  GET|HEAD  login .............................................................. login ΓÇ║ Auth\SessionController@create
+  POST      login ......................................................... login.store ΓÇ║ Auth\SessionController@store
+  POST      logout ........................................................... logout ΓÇ║ Auth\SessionController@destroy
+  GET|HEAD  my-requests ..................................................... requests.index ΓÇ║ RequestController@index
+  GET|HEAD  profile ............................................................ profile.edit ΓÇ║ ProfileController@edit
+  PATCH     profile ........................................................ profile.update ΓÇ║ ProfileController@update
+  PUT       profile/password ..................................... profile.password ΓÇ║ ProfileController@updatePassword
+  GET|HEAD  register ....................................................... register ΓÇ║ Auth\RegisterController@create
+  POST      register .................................................. register.store ΓÇ║ Auth\RegisterController@store
+  POST      requests/{donationRequest}/accept ............................. requests.accept ΓÇ║ RequestController@accept
+  POST      requests/{donationRequest}/decline .......................... requests.decline ΓÇ║ RequestController@decline
+  POST      requests/{donationRequest}/receive .......................... requests.receive ΓÇ║ RequestController@receive
+  POST      requests/{donationRequest}/schedule ....................... requests.schedule ΓÇ║ RequestController@schedule
+  POST      requests/{donationRequest}/withdraw ....................... requests.withdraw ΓÇ║ RequestController@withdraw
+
+                                                                                                   Showing [46] routes
+

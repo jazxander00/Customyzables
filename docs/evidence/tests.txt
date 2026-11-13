@@ -1,0 +1,33 @@
+﻿
+  [30;43;1m WARN [39;49;22m Your XML configuration validates against a deprecated schema. Migrate your XML configuration using "--migrate-configuration"!
+
+   PASS  Tests\Unit\ExampleTest
+  Γ£ô that true is true
+
+   PASS  Tests\Feature\ExampleTest
+  Γ£ô the application returns a successful response                                                                0.26s  
+
+   PASS  Tests\Feature\SmokeTest
+  Γ£ô public pages render                                                                                          0.08s  
+  Γ£ô donation detail renders without login                                                                        0.06s  
+  Γ£ô donor dashboard and listing pages render                                                                     0.08s  
+  Γ£ô upcycler dashboard and requests render                                                                       0.08s  
+  Γ£ô admin pages render                                                                                           0.08s  
+  Γ£ô roles cannot reach each others areas                                                                         0.06s  
+  Γ£ô unknown urls show the branded not found page                                                                 0.05s  
+  Γ£ô unverified upcycler cannot request                                                                           0.06s  
+  Γ£ô donor can publish a donation                                                                                 0.06s  
+  Γ£ô full request flow from listed to completed                                                                   0.07s  
+  Γ£ô admin can verify an upcycler                                                                                 0.06s  
+  Γ£ô conversation is visible to both participants                                                                 0.06s  
+  Γ£ô outsider cannot read a conversation                                                                          0.06s  
+  Γ£ô donor can update a listed donation                                                                           0.05s  
+  Γ£ô only the owner can update a listed donation                                                                  0.05s  
+  Γ£ô a donation outside listed status cannot be updated                                                           0.05s  
+  Γ£ô admin can view reports and export csv                                                                        0.06s  
+  Γ£ô donors cannot view admin reports                                                                             0.05s  
+  Γ£ô csv export neutralises spreadsheet formulas                                                                  0.05s  
+
+  Tests:    21 passed (81 assertions)
+  Duration: 1.58s
+

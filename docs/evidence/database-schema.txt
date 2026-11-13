@@ -1,0 +1,151 @@
+﻿Customyzables - database schema (SQLite)
+Generated: 2026-11-13 12:40:22
+==============================================================================
+
+TABLE: audit_logs  (rows: 0)
+------------------------------------------------------------------------------
+  id                         INTEGER          PK NOT NULL
+  actor_id                   INTEGER          
+  action                     varchar          NOT NULL
+  subject_type               varchar          
+  subject_id                 INTEGER          
+  meta                       TEXT             
+  ip                         varchar          
+  created_at                 datetime         
+  updated_at                 datetime         
+  Foreign keys:
+    actor_id -> users.id  (on update NO ACTION, on delete SET NULL)
+
+TABLE: donation_events  (rows: 10)
+------------------------------------------------------------------------------
+  id                         INTEGER          PK NOT NULL
+  donation_id                INTEGER          NOT NULL
+  actor_id                   INTEGER          
+  from_status                varchar          
+  to_status                  varchar          NOT NULL
+  note                       varchar          
+  created_at                 datetime         
+  updated_at                 datetime         
+  Foreign keys:
+    actor_id -> users.id  (on update NO ACTION, on delete SET NULL)
+    donation_id -> donations.id  (on update NO ACTION, on delete CASCADE)
+
+TABLE: donation_images  (rows: 10)
+------------------------------------------------------------------------------
+  id                         INTEGER          PK NOT NULL
+  donation_id                INTEGER          NOT NULL
+  path                       varchar          NOT NULL
+  position                   INTEGER          NOT NULL default '0'
+  created_at                 datetime         
+  updated_at                 datetime         
+  Foreign keys:
+    donation_id -> donations.id  (on update NO ACTION, on delete CASCADE)
+
+TABLE: donation_requests  (rows: 5)
+------------------------------------------------------------------------------
+  id                         INTEGER          PK NOT NULL
+  donation_id                INTEGER          NOT NULL
+  upcycler_id                INTEGER          NOT NULL
+  message                    TEXT             
+  status                     varchar          NOT NULL default 'pending'
+  scheduled_at               datetime         
+  scheduled_note             varchar          
+  responded_at               datetime         
+  completed_at               datetime         
+  created_at                 datetime         
+  updated_at                 datetime         
+  Foreign keys:
+    upcycler_id -> users.id  (on update NO ACTION, on delete CASCADE)
+    donation_id -> donations.id  (on update NO ACTION, on delete CASCADE)
+
+TABLE: donations  (rows: 10)
+------------------------------------------------------------------------------
+  id                         INTEGER          PK NOT NULL
+  user_id                    INTEGER          NOT NULL
+  title                      varchar          NOT NULL
+  description                TEXT             NOT NULL
+  category                   varchar          NOT NULL
+  condition                  varchar          NOT NULL
+  weight_kg                  numeric          NOT NULL default '0'
+  item_count                 INTEGER          NOT NULL default '1'
+  barangay                   varchar          NOT NULL
+  handoff_method             varchar          NOT NULL default 'pickup'
+  pickup_address             varchar          
+  available_from             date             
+  status                     varchar          NOT NULL default 'listed'
+  views                      INTEGER          NOT NULL default '0'
+  created_at                 datetime         
+  updated_at                 datetime         
+  Foreign keys:
+    user_id -> users.id  (on update NO ACTION, on delete CASCADE)
+
+TABLE: failed_jobs  (rows: 0)
+------------------------------------------------------------------------------
+  id                         INTEGER          PK NOT NULL
+  uuid                       varchar          NOT NULL
+  connection                 TEXT             NOT NULL
+  queue                      TEXT             NOT NULL
+  payload                    TEXT             NOT NULL
+  exception                  TEXT             NOT NULL
+  failed_at                  datetime         NOT NULL default CURRENT_TIMESTAMP
+
+TABLE: messages  (rows: 2)
+------------------------------------------------------------------------------
+  id                         INTEGER          PK NOT NULL
+  donation_id                INTEGER          NOT NULL
+  request_id                 INTEGER          
+  sender_id                  INTEGER          NOT NULL
+  body                       TEXT             NOT NULL
+  read_at                    datetime         
+  created_at                 datetime         
+  updated_at                 datetime         
+  Foreign keys:
+    sender_id -> users.id  (on update NO ACTION, on delete CASCADE)
+    request_id -> donation_requests.id  (on update NO ACTION, on delete CASCADE)
+    donation_id -> donations.id  (on update NO ACTION, on delete CASCADE)
+
+TABLE: migrations  (rows: 10)
+------------------------------------------------------------------------------
+  id                         INTEGER          PK NOT NULL
+  migration                  varchar          NOT NULL
+  batch                      INTEGER          NOT NULL
+
+TABLE: password_reset_tokens  (rows: 0)
+------------------------------------------------------------------------------
+  email                      varchar          PK NOT NULL
+  token                      varchar          NOT NULL
+  created_at                 datetime         
+
+TABLE: personal_access_tokens  (rows: 0)
+------------------------------------------------------------------------------
+  id                         INTEGER          PK NOT NULL
+  tokenable_type             varchar          NOT NULL
+  tokenable_id               INTEGER          NOT NULL
+  name                       varchar          NOT NULL
+  token                      varchar          NOT NULL
+  abilities                  TEXT             
+  last_used_at               datetime         
+  expires_at                 datetime         
+  created_at                 datetime         
+  updated_at                 datetime         
+
+TABLE: users  (rows: 7)
+------------------------------------------------------------------------------
+  id                         INTEGER          PK NOT NULL
+  name                       varchar          NOT NULL
+  email                      varchar          NOT NULL
+  email_verified_at          datetime         
+  password                   varchar          NOT NULL
+  role                       varchar          NOT NULL default 'donor'
+  is_verified                tinyint(1)       NOT NULL default '0'
+  verified_at                datetime         
+  is_suspended               tinyint(1)       NOT NULL default '0'
+  barangay                   varchar          
+  phone                      varchar          
+  organization               varchar          
+  bio                        TEXT             
+  avatar_path                varchar          
+  remember_token             varchar          
+  created_at                 datetime         
+  updated_at                 datetime         
+

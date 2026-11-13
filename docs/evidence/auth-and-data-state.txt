@@ -1,0 +1,44 @@
+﻿Customyzables - authentication & data state
+Generated: 2026-11-13 12:45:09
+======================================================================
+
+PASSWORD STORAGE
+----------------------------------------------------------------------
+Account:            elaine@customyzables.test
+Stored hash prefix: $2y$10$...
+Hash algorithm:     bcrypt
+Plaintext stored?   NO - users.password holds a one-way bcrypt hash only
+Hash::check('password'): true
+Hash::check('wrong'):    false
+
+USERS BY ROLE
+----------------------------------------------------------------------
+  admin        1
+  donor        3
+  upcycler     3
+  TOTAL        7
+
+RECORD COUNTS
+----------------------------------------------------------------------
+  users                7
+  donations            10
+  donation_images      10
+  donation_requests    5
+  donation_events      10
+  messages             2
+  audit_logs           0
+
+DONATIONS BY STATUS
+----------------------------------------------------------------------
+  accepted       1
+  completed      1
+  listed         5
+  received       1
+  requested      1
+  scheduled      1
+
+REQUESTS BY STATUS
+----------------------------------------------------------------------
+  accepted       2
+  completed      1
+  pending        2

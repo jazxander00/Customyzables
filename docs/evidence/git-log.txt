@@ -1,0 +1,17 @@
+﻿70cce02 (HEAD -> main, origin/main, origin/checking-friday, origin/HEAD) Merge pull request #4 from jazxander00/legara
+e5d2b9a (origin/legara) refactor(ui): adopt Editorial Craft style, add Google OAuth, seed real donation images
+f01e57b feat: add admin reports, CSV export, and donation editing
+25ede6b Merge pull request #3 from jazxander00/legara
+54fbd47 Merge branch 'legara' of https://github.com/jazxander00/Customyzables into legara
+28796e7 feat: add admin reports, CSV export, and donation editing
+ec8b1d5 Merge pull request #2 from jazxander00/legara-update
+b06f882 (origin/legara-update) Revert "feat: add admin reports, CSV export, and donation editing"
+27407e5 feat: add admin reports, CSV export, and donation editing
+bc76069 Merge pull request #1 from jazxander00/design
+b89510c (origin/design) improved css design
+cddc645 Add branded 404 and 403 error pages
+c5a30ff add mobile nav menu for phones
+94ef8e1 fix duplicated barangay, search wildcards, and leftover photos
+024b692 changed for login.blade email and phone number
+4145c0a updated login.blade.php for more conscize
+8d2eb33 Customyzables
