@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ReportController extends Controller
@@ -101,10 +102,18 @@ class ReportController extends Controller
     {
         return Donation::query()
             ->whereBetween('created_at', [$from, $to])
-            ->selectRaw("DATE_FORMAT(created_at, '%Y-%m') as month, COUNT(*) as total, SUM(weight_kg) as kg")
+            ->selectRaw($this->monthExpression().' as month, COUNT(*) as total, SUM(weight_kg) as kg')
             ->groupBy('month')
             ->orderBy('month')
             ->get();
+    }
+
+    /** MySQL and SQLite format dates differently; keep reports portable. */
+    private function monthExpression(): string
+    {
+        return DB::connection()->getDriverName() === 'sqlite'
+            ? "strftime('%Y-%m', created_at)"
+            : "DATE_FORMAT(created_at, '%Y-%m')";
     }
 
     private function byCategory(Carbon $from, Carbon $to)

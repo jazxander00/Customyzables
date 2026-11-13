@@ -6,6 +6,7 @@ use App\Models\Donation;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
@@ -57,7 +58,7 @@ class ProfileController extends Controller
             $completed = $user->donations()->whereIn('status', ['received', 'completed'])->get();
             $monthly = $user->donations()
                 ->whereIn('status', ['received', 'completed'])
-                ->selectRaw("DATE_FORMAT(created_at, '%Y-%m') as month, SUM(weight_kg) as kg")
+                ->selectRaw($this->monthExpression().' as month, SUM(weight_kg) as kg')
                 ->groupBy('month')
                 ->orderBy('month')
                 ->get();
@@ -67,7 +68,7 @@ class ProfileController extends Controller
                 ->get();
             $monthly = Donation::whereIn('status', ['received', 'completed'])
                 ->whereHas('acceptedRequest', fn ($q) => $q->where('upcycler_id', $user->id))
-                ->selectRaw("DATE_FORMAT(created_at, '%Y-%m') as month, SUM(weight_kg) as kg")
+                ->selectRaw($this->monthExpression().' as month, SUM(weight_kg) as kg')
                 ->groupBy('month')
                 ->orderBy('month')
                 ->get();
@@ -77,5 +78,13 @@ class ProfileController extends Controller
         $communityKg = (float) Donation::whereIn('status', ['received', 'completed'])->sum('weight_kg');
 
         return view('profile.impact', compact('user', 'completed', 'monthly', 'totalKg', 'communityKg'));
+    }
+
+    /** MySQL and SQLite format dates differently; keep the impact chart portable. */
+    private function monthExpression(): string
+    {
+        return DB::connection()->getDriverName() === 'sqlite'
+            ? "strftime('%Y-%m', created_at)"
+            : "DATE_FORMAT(created_at, '%Y-%m')";
     }
 }
